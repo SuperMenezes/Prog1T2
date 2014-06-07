@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prog1T2", "Prog1T2\Prog1T2\Prog1T2.csproj", "{F7104E1F-7AAA-41E9-83E9-33F11F18920B}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "Prog1T2Content", "Prog1T2\Prog1T2Content\Prog1T2Content.contentproj", "{30ACBA48-F077-42C9-A86E-B8D4F499BCCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoEngine", "PotatoEngine\PotatoEngine.csproj", "{CF90EAFB-4FE6-4762-B790-DE7DF1388787}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7104E1F-7AAA-41E9-83E9-33F11F18920B}.Debug|x86.ActiveCfg = Debug|x86
+		{F7104E1F-7AAA-41E9-83E9-33F11F18920B}.Debug|x86.Build.0 = Debug|x86
+		{F7104E1F-7AAA-41E9-83E9-33F11F18920B}.Release|x86.ActiveCfg = Release|x86
+		{F7104E1F-7AAA-41E9-83E9-33F11F18920B}.Release|x86.Build.0 = Release|x86
+		{30ACBA48-F077-42C9-A86E-B8D4F499BCCD}.Debug|x86.ActiveCfg = Debug|x86
+		{30ACBA48-F077-42C9-A86E-B8D4F499BCCD}.Release|x86.ActiveCfg = Release|x86
+		{CF90EAFB-4FE6-4762-B790-DE7DF1388787}.Debug|x86.ActiveCfg = Debug|x86
+		{CF90EAFB-4FE6-4762-B790-DE7DF1388787}.Debug|x86.Build.0 = Debug|x86
+		{CF90EAFB-4FE6-4762-B790-DE7DF1388787}.Release|x86.ActiveCfg = Release|x86
+		{CF90EAFB-4FE6-4762-B790-DE7DF1388787}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
