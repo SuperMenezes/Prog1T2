@@ -111,12 +111,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemies\EnemyShip1.cs" />
-    <Compile Include="MyScene.cs" />
+    <Compile Include="GameScene.cs" />
+    <Compile Include="GameStats.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="PlayerShip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="T2Hero.cs" />
+    <Compile Include="Shot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

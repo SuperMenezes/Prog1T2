@@ -15,8 +15,8 @@ namespace PotatoEngine.Graphics
         private float m_scrollspeed;
         private bool m_visible;
 
-        protected List<PotatoEntity> EntityList;
-        protected List<PotatoEntity> TileList;
+        public List<PotatoEntity> EntityList;
+        //protected List<PotatoEntity> TileList;
 
         public PotatoLayer()
         {

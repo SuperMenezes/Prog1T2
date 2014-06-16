@@ -15,7 +15,8 @@ namespace PotatoEngine.Graphics
 
         public Vector2 Movement { get; set; }
 
-        //private Vector2 m_currentPos;
+        public Rectangle BoundingBox;
+
         private Vector2 m_startPos;
         private Vector2 m_targetPos;
         private Vector2 m_offsetPos;
@@ -56,9 +57,12 @@ namespace PotatoEngine.Graphics
             }
 
             Posicao = m_startPos + (m_offsetPos * m_moveTimer.ElapsedTime);
+
+            BoundingBox.X = (int)Posicao.X;
+            BoundingBox.Y = (int)Posicao.Y;
+
             return m_moveTimer.Finished;
         }
-
 
     }
 }

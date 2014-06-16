@@ -6,16 +6,16 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PotatoEngine.Graphics
 {
-    public class PotatoScene : PotatoEntity
+    public class PotatoScene
     {
-        protected List<PotatoLayer> Layers;
+        public  List<PotatoLayer> Layers;
 
         public PotatoScene()
         {
             Layers = new List<PotatoLayer>();
         }
 
-        public override void Update(Microsoft.Xna.Framework.GameTime p_gametime)
+        public virtual void Update(Microsoft.Xna.Framework.GameTime p_gametime)
         {
             foreach (PotatoLayer layer in Layers)
             {
@@ -23,7 +23,7 @@ namespace PotatoEngine.Graphics
             }
         }
 
-        public override void Draw(SpriteBatch p_spritebatch, Microsoft.Xna.Framework.GameTime p_gametime)
+        public virtual void Draw(SpriteBatch p_spritebatch, Microsoft.Xna.Framework.GameTime p_gametime)
         {
             foreach (PotatoLayer layer in Layers)
             {

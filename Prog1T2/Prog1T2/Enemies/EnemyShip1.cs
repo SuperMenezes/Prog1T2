@@ -56,35 +56,38 @@ namespace Prog1T2
                     
                 break;
             }
-            Sprite.Update(p_gametime);
+            BaseSprite.Update(p_gametime);
         }
 
         public override void Draw(SpriteBatch p_spritebatch, GameTime p_gametime)
         {
-            Sprite.Draw(p_spritebatch, p_gametime);
+            BaseSprite.Draw(p_spritebatch, p_gametime);
         }
 
         internal void SetAnimation(string p_animationname)
         {
-            Sprite.SetAnimation(p_animationname);
+            BaseSprite.SetAnimation(p_animationname, false);
         }
 
         public void ClassicSetup(Texture2D p_texture, int p_spritewidth, int p_spriteheight, Vector2 p_posicao, float p_starttimer)
         {
             Posicao = p_posicao;
 
-            m_moveSequence.Add(new Vector2(290, 180));
-            m_moveSequence.Add(new Vector2(576, 540));
-            m_moveSequence.Add(new Vector2(1200, 540));
+            BoundingBox.Width = (int)(p_spritewidth * 1f);
+            BoundingBox.Height = (int)(p_spriteheight * 1f);
+
+            m_moveSequence.Add(new Vector2(280, 128));
+            m_moveSequence.Add(new Vector2(374, 374));
+            m_moveSequence.Add(new Vector2(1200, 374));
 
 
-            Sprite = new PotatoSprite(this, p_texture, p_spritewidth, p_spriteheight);
-            Sprite.AddAnimation("MOVE", 0.1f, true, 4, new int[] { 0,1,2,3 });
+            BaseSprite = new PotatoSprite(this, p_texture, p_spritewidth, p_spriteheight);
+            BaseSprite.AddAnimation("MOVE", 0.1f, true, 4, new int[] { 0,1,2,3 });
 
             m_startTimer = new PotatoTimer(p_starttimer);
 
             SetAnimation("MOVE");
-            MoveTo(m_moveSequence[moveindex], 0f, 3);
+            MoveTo(m_moveSequence[moveindex], 0f, 2);
             moveindex++;
         }
 

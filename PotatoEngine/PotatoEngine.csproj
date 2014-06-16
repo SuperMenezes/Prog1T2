@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PotatoUtils\NewPotatoTimer.cs" />
     <Compile Include="Potato\PotatoEnemy.cs" />
     <Compile Include="Potato\PotatoCharacter.cs" />
     <Compile Include="Potato\PotatoLayer.cs" />

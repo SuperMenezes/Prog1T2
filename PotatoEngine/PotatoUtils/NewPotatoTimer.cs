@@ -5,20 +5,20 @@ using Microsoft.Xna.Framework;
 
 namespace PotatoEngine
 {
-    public class PotatoTimer
+    public class NewPotatoTimer
     {
-        //private float m_start = 0.0f;
+        private float m_start = 0.0f;
         private float m_count = 0.0f;
         private float m_timer = 0.0f;
 
         private bool m_started = false;
 
-        public PotatoTimer(float timer)
+        public NewPotatoTimer(float timer)
         {
             m_timer = timer;
         }
 
-        public PotatoTimer()
+        public NewPotatoTimer()
         {
             m_timer = 4.0f;
         }
@@ -35,7 +35,7 @@ namespace PotatoEngine
 
         public void Reset()
         {
-            //m_start = 0.0f;
+            m_start = 0.0f;
             m_count = 0.0f;
             m_started = false;
         }
@@ -43,23 +43,20 @@ namespace PotatoEngine
         public void Reset(GameTime gameTime)
         {
             m_count = 0.0f;
-            //m_start = (float)gameTime.TotalGameTime.TotalSeconds;
+            m_start = (float)gameTime.TotalGameTime.TotalSeconds;
             m_started = true;
         }
 
         public void Start(GameTime gameTime)
         {
-            //m_start = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //m_start = 0.0f;
-            m_count = 0.0f;
+            m_start = (float)gameTime.TotalGameTime.TotalSeconds;
             m_started = true;
         }
 
         public bool Update(GameTime gameTime)
         {
-            if (m_count < m_timer)
-                //m_count = (float)gameTime.ElapsedGameTime.TotalSeconds - m_start;
-                m_count += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if(m_count < m_timer)
+                m_count = (float)gameTime.TotalGameTime.TotalSeconds - m_start;
             if (m_count >= m_timer)
                 return true;
             return false;

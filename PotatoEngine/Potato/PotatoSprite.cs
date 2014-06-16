@@ -5,12 +5,11 @@ using Microsoft.Xna.Framework;
 
 namespace PotatoEngine.Graphics
 {
-    public  class PotatoSprite
+    public class PotatoSprite
     {
         private PotatoEntity m_entitypai;
 
-        
-        private Texture2D m_texture;
+        public Texture2D Texture;
         public int Width;
         public int Height;
 
@@ -18,11 +17,11 @@ namespace PotatoEngine.Graphics
 
         private Point m_sheetsize;
 
-        private Rectangle m_rectangle;
+        public Rectangle FrameRectangle;
 
         private Dictionary<String, PotatoSpriteAnimation> m_animations;
 
-        private PotatoSpriteAnimation m_currentanimation;
+        public PotatoSpriteAnimation CurrentAnimation;
 
         private bool m_visible;
 
@@ -31,15 +30,15 @@ namespace PotatoEngine.Graphics
             m_entitypai = p_entitypai;
 
 
-            m_texture = p_texture;
+            Texture = p_texture;
             m_animations = new Dictionary<string, PotatoSpriteAnimation>();
 
             Width = p_spritewidth;
             Height = p_spriteheight;
 
-            m_rectangle = new Rectangle();
-            m_rectangle.Width = p_spritewidth;
-            m_rectangle.Height = p_spriteheight;
+            FrameRectangle = new Rectangle();
+            FrameRectangle.Width = p_spritewidth;
+            FrameRectangle.Height = p_spriteheight;
 
             m_sheetsize = new Point();
             m_sheetsize.X = p_texture.Width / p_spritewidth;
@@ -59,7 +58,7 @@ namespace PotatoEngine.Graphics
             return true;
         }
 
-        public bool SetAnimation(String p_animationname)
+        public bool SetAnimation(String p_animationname, bool restart)
         {
             if(!m_animations.ContainsKey(p_animationname))
             {
@@ -68,34 +67,39 @@ namespace PotatoEngine.Graphics
 
             if (p_animationname != m_animations[p_animationname].AnimationName)
             {
-                m_currentanimation = m_animations[p_animationname];
-                m_currentanimation.Reset();
+                CurrentAnimation = m_animations[p_animationname];
+                CurrentAnimation.Reset();
             }
             else
             {
-                m_currentanimation = m_animations[p_animationname];
+                CurrentAnimation = m_animations[p_animationname];
+                if (restart)
+                {
+                    CurrentAnimation.Reset();
+                }
+
             }
             return true;
         }
         
         public void Update(GameTime p_gametime)
         {
-            if (m_currentanimation == null)
+            if (CurrentAnimation == null)
                 return;
 
-            m_currentanimation.Update(p_gametime);
+            CurrentAnimation.Update(p_gametime);
 
-            m_rectangle.X = (m_currentanimation.CurrentFrame % m_sheetsize.X )* Width;
+            FrameRectangle.X = (CurrentAnimation.CurrentFrame % m_sheetsize.X )* Width;
 
-            m_rectangle.Y = (m_currentanimation.CurrentFrame / m_sheetsize.X) * Height;
+            FrameRectangle.Y = (CurrentAnimation.CurrentFrame / m_sheetsize.X) * Height;
         }
 
         public void Draw(SpriteBatch p_spritebatch, GameTime p_gametime)
         {
-            if (m_currentanimation == null)
+            if (CurrentAnimation == null)
                 return;
 
-            p_spritebatch.Draw(m_texture, m_entitypai.Posicao, m_rectangle, Color.White);
+            p_spritebatch.Draw(Texture, m_entitypai.Posicao, FrameRectangle, Color.White);
         }
     }
 }

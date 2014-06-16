@@ -13,29 +13,22 @@ namespace PotatoEngine.PotatoGraphics
         public override void Update(GameTime p_gametime)
         {
             Vector2 movement = Vector2.Zero;
-            //if (GamePad.GetState(PlayerIndex.One).IsConnected)
-            //{
-                if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Up))
-                {
-                    movement.Y -= 1;
-                }
-                if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Down))
-                {
-                    movement.Y += 1;
-                }
-                if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Right))
-                {
-                    movement.X += 1;
-                }
-                if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Left))
-                {
-                    movement.X -= 1;
-                }
-            //}
-            //else
-            //{
-
-            //}
+            if (GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Up))
+            {
+                movement.Y -= 1;
+            }
+            if (GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Down))
+            {
+                movement.Y += 1;
+            }
+            if (GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Right))
+            {
+                movement.X += 1;
+            }
+            if (GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Left))
+            {
+                movement.X -= 1;
+            }
             Movement = movement;
         }
     }

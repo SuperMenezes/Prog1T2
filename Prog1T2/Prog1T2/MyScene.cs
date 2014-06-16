@@ -42,7 +42,7 @@ namespace Prog1T2
                 ship.Posicao = new Vector2(100, 360 - 24);
                 enemyTexture = p_content.Load<Texture2D>(@"CLASSIC\enemy1");
 
-                map = p_content.Load<Map>(@"TMX\gradius_volcano");
+                map = p_content.Load<Map>(@"TMX\volcano2");
             }
 
             
@@ -65,15 +65,18 @@ namespace Prog1T2
             
             if (mapView.X < map.Bounds.Width-mapView.Width)
             {
-                mapView.X++;
+                mapView.X+=1;
             }
             base.Update(p_gametime);
         }
 
         public override void Draw(SpriteBatch p_spritebatch, GameTime p_gametime)
         {
-            map.Draw(p_spritebatch, mapView);
+            //map.Draw(p_spritebatch, mapView);
+            map.DrawLayer(p_spritebatch, 0, mapView, 0);
             base.Draw(p_spritebatch, p_gametime);
+            map.DrawLayer(p_spritebatch, 1, mapView, 1);
+            
         }
 
         private void CriaInimigos()

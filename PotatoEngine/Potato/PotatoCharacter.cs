@@ -8,6 +8,13 @@ namespace PotatoEngine.Graphics
 {
     public abstract class PotatoCharacter : PotatoMovable
     {
-        protected PotatoSprite Sprite;
+        protected PotatoScene  Scene;
+        protected PotatoSprite BaseSprite;
+
+        public override bool TestCollision(PotatoMovable other)
+        {
+            return(BoundingBox.Intersects(other.BoundingBox));
+        }
+
     }
 }

@@ -18,7 +18,13 @@ namespace Prog1T2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        MyScene scene;
+        enum GameState { GS_MENU, GS_GAME, GS_PAUSE };
+        private GameState State;
+
+        TimeSpan gamespan;
+        private GameScene CurrentScene;
+
+        private GamePadState m_gamePadState;
 
         public Game1()
         {
@@ -30,24 +36,26 @@ namespace Prog1T2
 
             //this.IsMouseVisible = true;
 
-            scene = new MyScene();
+            CurrentScene = new GameScene();
+            State = GameState.GS_GAME;
         }
 
         protected override void Initialize()
         {
             base.Initialize();
-            scene.Initialize();
+            CurrentScene.Initialize();
+
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            scene.LoadContent(this.Content);
+            CurrentScene.LoadContent(this.Content);
         }
 
         protected override void UnloadContent()
         {
-            scene = null;
+            CurrentScene = null;
         }
 
         protected override void Update(GameTime gameTime)
@@ -55,9 +63,35 @@ namespace Prog1T2
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            scene.Update(gameTime);
+            if (State == GameState.GS_GAME)
+            {
+                if (m_gamePadState != GamePad.GetState(PlayerIndex.One))
+                {
+                    if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start) || Keyboard.GetState().IsKeyDown(Keys.Enter))
+                    {
 
-            base.Update(gameTime);
+                        State = GameState.GS_PAUSE;
+                    }
+                }
+            } else if (State == GameState.GS_PAUSE)
+            {
+                if (m_gamePadState != GamePad.GetState(PlayerIndex.One))
+                {
+                    if (GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start) || Keyboard.GetState().IsKeyDown(Keys.Enter))
+                    {
+
+                        State = GameState.GS_GAME;
+                    }
+                }
+            }
+
+            if (State == GameState.GS_GAME)
+            {
+                CurrentScene.Update(gameTime);
+                base.Update(gameTime);
+            }
+
+            m_gamePadState = GamePad.GetState(PlayerIndex.One);
         }
 
         protected override void Draw(GameTime gameTime)
@@ -66,7 +100,7 @@ namespace Prog1T2
 
             spriteBatch.Begin();
 
-            scene.Draw(spriteBatch, gameTime);
+            CurrentScene.Draw(spriteBatch, gameTime);
 
             spriteBatch.End();
             base.Draw(gameTime);

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace PotatoEngine.Graphics
 {
-    class PotatoSpriteAnimation
+    public class PotatoSpriteAnimation
     {
         public String AnimationName { get; set; }
 
@@ -39,6 +39,13 @@ namespace PotatoEngine.Graphics
         public void Reset()
         {
             m_currentframe = 0;
+        }
+
+        public bool IsFinished
+        {
+            get {
+                return ((m_currentframe + 1) >= m_framecount) && !m_loop;
+            }
         }
 
         public void Update(GameTime p_gametime)
